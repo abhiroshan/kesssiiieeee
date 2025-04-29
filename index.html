@@ -1,0 +1,203 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>For Kessie</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom, #ffe6f0, #ffffff);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      overflow-x: hidden;
+      padding-bottom: 40px;
+    }
+
+    img.top-image {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      margin-top: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      animation: fadeInDown 1.2s ease;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      animation: fadeInDown 1s ease-out;
+    }
+
+    p, .poem {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      animation: fadeInUp 1s ease-out;
+    }
+
+    .poem-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin: 30px 0;
+    }
+
+    .poem {
+      font-style: italic;
+      white-space: pre-line;
+      color: #cc3366;
+      max-width: 300px;
+      text-align: left;
+    }
+
+    .side-image {
+      width: 250px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    }
+
+    button {
+      padding: 1rem 2rem;
+      font-size: 1.25rem;
+      background-color: #ff6699;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      animation: fadeIn 2s ease;
+    }
+
+    button:hover {
+      background-color: #e05588;
+      transform: scale(1.05);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .heart {
+      font-size: 4rem;
+      animation: pulse 1.2s infinite;
+      margin-bottom: 20px;
+    }
+
+    .countdown {
+      font-size: 2rem;
+      margin: 20px 0;
+      color: #ff3399;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInDown {
+      0% { opacity: 0; transform: translateY(-30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+    <div id="main" class="fade-section">
+    <h1>Hi Kessie ❤️</h1>
+
+    <p>Here's something from my heart to yours...</p>
+
+    <div class="poem-container">
+      <div class="poem">
+        Every smile you share is a spark in my soul,  
+        Every moment with you makes me whole.  
+        From sunlit mornings to moonlit nights,  
+        Loving you feels perfectly right.  
+
+        You’re the reason I dream, the wish I hold dear,  
+        My favorite hello, my hardest goodbye tear.  
+        So today I ask, as my heart starts to race,  
+        Will you let me love you for all our days?
+      </div>
+      
+    </div>
+
+    <p>I wrote this with one dream in mind:  
+    to walk through every tomorrow with your hand in mine.</p>
+
+    <p style="color: #d63384; font-size: 1.2rem; font-weight: 500; max-width: 700px; margin: 1.5rem auto;">
+      We both made mistakes, but we’ve forgiven each other because we believe in a better future together, baby.  
+      I love you, Kessie. We’re going to be the best, baby.  
+      And of course… I’ll be with you soon, Kessie.  
+      ❤️ Surprise ❤️
+    </p>
+
+    <div class="countdown" id="countdown"></div>
+
+    <p>The moment is almost here...</p>
+    <button onclick="showProposal()">💖 Ready? 💖</button>
+  </div>
+
+  <div id="proposal" class="hidden fade-section">
+    <div class="heart">💗</div>
+    <h1>Kessie, Will You Marry Me?</h1>
+    <button onclick="respondYes()">YES! 💍</button>
+  </div>
+
+  <div id="response" class="hidden fade-section">
+    <h1>YAY!!! 🎉🎉🎉</h1>
+    <p>You've made me the happiest person alive. I can't wait to spend forever with you.</p>
+    <div class="heart">💖</div>
+  </div>
+
+  <script>
+    const targetDate = new Date('December 2, 2025 00:00:00').getTime();
+    const countdownEl = document.getElementById('countdown');
+
+    const countdownTimer = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      countdownEl.textContent = `⏳ ${days} days ${hours}h ${minutes}m ${seconds}s until our special day (Dec 2)`;
+
+      if (distance < 0) {
+        clearInterval(countdownTimer);
+        countdownEl.textContent = "✨ It's our special day! ✨";
+      }
+    }, 1000);
+
+    function showProposal() {
+      document.getElementById('main').classList.add('hidden');
+      document.getElementById('proposal').classList.remove('hidden');
+    }
+
+    function respondYes() {
+      document.getElementById('proposal').classList.add('hidden');
+      document.getElementById('response').classList.remove('hidden');
+    }
+  </script>
+</body>
+</html>
